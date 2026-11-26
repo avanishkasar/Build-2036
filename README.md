@@ -10,3 +10,7 @@ Submission workspace for **BUILD 2036**, the official hackathon of the 11th TiE 
 | `deck/ADHIKAR_BUILD2036.pptx` | 17-slide submission deck with speaker notes for a 3-minute pitch |
 | `deck/ADHIKAR_BUILD2036.pdf` | PDF export of the deck |
 | `deck/build.js` | pptxgenjs generator for the deck |
+
+| `deck/GEMINI_IMAGE_PROMPTS.md` | Image prompts for Gemini to replace the Canva stock visuals |
+
+The final deck lives in Canva: https://www.canva.com/d/O3wvp_MGJXZN3WD
