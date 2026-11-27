@@ -1,108 +1,143 @@
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Adhikar · Agents think. Adhikar decides.</title>
   <meta name="description" content="A deterministic trust layer between AI agents and UPI. Built for BUILD 2036, TiE Global Summit 2026." />
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: Inter, system-ui, sans-serif; }
-    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
-    .fade { animation: fade .35s ease-out both; }
-    @keyframes fade { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
-  </style>
+  <link rel="stylesheet" href="/app.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f4d3a' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E" />
 </head>
-<body class="h-full bg-[#0a0f1a] text-slate-200 antialiased">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8">
-    <header class="flex flex-wrap items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/15 ring-1 ring-amber-400/30"><i data-lucide="shield-check" class="h-5 w-5 text-amber-400"></i></div>
+<body class="bg-paper text-ink antialiased">
+  <svg width="0" height="0" class="absolute">
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m6 3 14 9-14 9V3z"/></symbol>
+    <symbol id="i-swords" viewBox="0 0 24 24"><path d="M14.5 17.5 3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></symbol>
+  </svg>
+
+  <header class="border-b border-line">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <svg class="h-7 w-7 text-forest" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#i-shield"/></svg>
+        <span class="font-serif text-2xl leading-none tracking-tight">Adhikar</span>
+      </a>
+      <nav class="flex flex-wrap items-center gap-2 text-sm">
+        <span class="hidden rounded-full border border-line px-3 py-1 text-muted sm:inline">BUILD 2036 · Frontier 03</span>
+        <a href="/api/docs" class="rounded-full border border-line px-3 py-1 text-muted hover:border-forest hover:text-forest">API</a>
+        <a href="https://github.com/avanishkasar/Build-2036" class="rounded-full border border-line px-3 py-1 text-muted hover:border-forest hover:text-forest">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="hero" class="grid gap-10 py-12 lg:grid-cols-12 lg:py-16">
+      <div class="lg:col-span-7">
+        <p class="text-sm font-semibold uppercase tracking-[0.14em] text-forest">The trust layer between AI agents and UPI</p>
+        <h1 class="mt-4 font-serif text-5xl leading-[1.02] tracking-tight sm:text-7xl">Agents think.<br /><span class="text-forest">Adhikar decides.</span></h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">An AI agent proposes a payment. Plain code, not the model, checks it against a mandate the user signed once. Every request ends in one of three outcomes, and each one leaves a signed receipt.</p>
+        <div class="mt-6 flex flex-wrap gap-2 text-sm font-semibold">
+          <span class="chip bg-allow-soft text-allow"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"><use href="#i-check"/></svg>Allowed</span>
+          <span class="chip bg-pin-soft text-pin"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-key"/></svg>Ask for UPI PIN</span>
+          <span class="chip bg-block-soft text-block"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"><use href="#i-x"/></svg>Blocked</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <button id="run" class="btn bg-forest text-paper hover:bg-forest-deep"><svg class="h-4 w-4" fill="currentColor"><use href="#i-play"/></svg>Run the judge demo</button>
+          <button id="attacks" class="btn border border-ink/20 bg-card hover:border-forest hover:text-forest"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-swords"/></svg>Run the attack suite</button>
+        </div>
+      </div>
+
+      <aside id="mandate" class="lg:col-span-5">
+        <div class="card overflow-hidden">
+          <div class="flex items-center gap-2 border-b border-line bg-forest px-5 py-3 text-paper">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-file"/></svg>
+            <span class="text-sm font-semibold">Signed mandate</span>
+            <span class="ml-auto text-xs opacity-80">MDT RAMESH 001</span>
+          </div>
+          <div class="p-5">
+            <p class="font-serif text-2xl leading-tight">Ramesh lets the agent reorder. Not improvise.</p>
+            <p class="mt-1 text-sm text-muted">Auto parts unit, Pithampur near Indore. Illustrative pilot case.</p>
+            <dl class="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line text-sm">
+              <div class="bg-card p-3"><dt class="text-xs text-muted">Monthly cap</dt><dd class="mt-0.5 font-semibold">Rs 2,00,000</dd></div>
+              <div class="bg-card p-3"><dt class="text-xs text-muted">Per payment cap</dt><dd class="mt-0.5 font-semibold">Rs 75,000</dd></div>
+              <div class="bg-card p-3"><dt class="text-xs text-muted">UPI PIN above</dt><dd class="mt-0.5 font-semibold">Rs 50,000</dd></div>
+              <div class="bg-card p-3"><dt class="text-xs text-muted">Purposes</dt><dd class="mt-0.5 font-semibold">Raw material, packaging</dd></div>
+            </dl>
+            <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-muted">Six approved suppliers</p>
+            <ul class="mono mt-2 grid gap-1 text-xs text-ink/80">
+              <li>shreeji.steel@okhdfc</li><li>malwa.packaging@okicici</li><li>indore.bearings@oksbi</li><li>narmada.alloys@okaxis</li><li>mp.fasteners@okhdfc</li><li>dewas.paints@ybl</li>
+            </ul>
+            <p id="mandate-sig" class="mono mt-4 hidden break-all rounded-md bg-allow-soft px-3 py-2 text-[11px] text-allow"></p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="demo" class="hidden border-t border-line py-12">
+      <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-white">ADHIKAR</h1>
-          <p class="text-xs text-slate-400">Agents think. Adhikar decides.</p>
+          <p class="text-sm font-semibold uppercase tracking-[0.14em] text-forest">Judge demo</p>
+          <h2 class="mt-2 font-serif text-4xl tracking-tight">One agent. Three payment requests.</h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button id="verify" class="btn-sm border border-ink/20 bg-card hover:border-forest hover:text-forest"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-link"/></svg>Verify receipt chain</button>
+          <button id="tamper" class="btn-sm border border-block/40 bg-card text-block hover:border-block"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-pen"/></svg>Tamper with receipt 2</button>
         </div>
       </div>
-      <div class="flex items-center gap-2 text-xs text-slate-400">
-        <span class="rounded-full border border-slate-700 px-3 py-1">BUILD 2036 · Frontier 03</span>
-        <a href="/api/docs" class="rounded-full border border-slate-700 px-3 py-1 hover:border-slate-500 hover:text-slate-200">API docs</a>
-        <a href="https://github.com/avanishkasar/Build-2036" class="rounded-full border border-slate-700 px-3 py-1 hover:border-slate-500 hover:text-slate-200">GitHub</a>
-      </div>
-    </header>
-
-    <section class="mt-10 grid gap-6 lg:grid-cols-5">
-      <div class="lg:col-span-3">
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">The trust layer between AI agents and UPI.</h2>
-        <p class="mt-4 max-w-xl text-slate-400">An agent proposes a payment. Plain code, not the model, checks it against a mandate the user signed once. Every request ends as <span class="text-emerald-400 font-medium">allowed</span>, <span class="text-amber-400 font-medium">ask for UPI PIN</span>, or <span class="text-rose-400 font-medium">blocked</span>, with a signed receipt.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <button id="run" class="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-5 py-3 font-semibold text-slate-950 hover:bg-amber-400 disabled:opacity-60"><i data-lucide="play" class="h-4 w-4"></i>Run the judge demo</button>
-          <button id="attacks" class="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:border-slate-500 disabled:opacity-60"><i data-lucide="swords" class="h-4 w-4"></i>Run the attack suite</button>
-        </div>
-      </div>
-      <div class="lg:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
-        <div class="flex items-center gap-2 text-sm font-semibold text-white"><i data-lucide="file-signature" class="h-4 w-4 text-amber-400"></i>Ramesh's mandate</div>
-        <p class="mt-1 text-xs text-slate-500">Auto parts unit, Pithampur near Indore. Illustrative pilot case.</p>
-        <dl class="mt-4 grid grid-cols-2 gap-3 text-sm">
-          <div class="rounded-lg bg-slate-800/50 p-3"><dt class="text-xs text-slate-400">Monthly cap</dt><dd class="font-semibold text-white">Rs 2,00,000</dd></div>
-          <div class="rounded-lg bg-slate-800/50 p-3"><dt class="text-xs text-slate-400">Per payment</dt><dd class="font-semibold text-white">Rs 75,000</dd></div>
-          <div class="rounded-lg bg-slate-800/50 p-3"><dt class="text-xs text-slate-400">PIN above</dt><dd class="font-semibold text-white">Rs 50,000</dd></div>
-          <div class="rounded-lg bg-slate-800/50 p-3"><dt class="text-xs text-slate-400">Payees</dt><dd class="font-semibold text-white">6 approved</dd></div>
-        </dl>
-        <p id="mandate-sig" class="mt-3 hidden text-xs text-slate-500"></p>
-      </div>
+      <div id="chain" class="mt-5 hidden"></div>
+      <div id="steps" class="mt-6 grid gap-5 md:grid-cols-3"></div>
     </section>
 
-    <section id="demo" class="mt-10 hidden">
-      <div class="flex flex-wrap items-end justify-between gap-3">
-        <h3 class="text-lg font-semibold text-white">One agent, three payment requests</h3>
-        <div class="flex gap-2">
-          <button id="verify" class="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-3 py-2 text-sm hover:border-slate-500"><i data-lucide="link" class="h-4 w-4"></i>Verify receipt chain</button>
-          <button id="tamper" class="inline-flex items-center gap-2 rounded-lg border border-rose-800/60 px-3 py-2 text-sm text-rose-300 hover:border-rose-600"><i data-lucide="pencil-off" class="h-4 w-4"></i>Tamper with receipt 2</button>
-        </div>
+    <section id="attack" class="hidden border-t border-line py-12">
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-forest">Attack suite</p>
+      <div class="mt-2 flex flex-wrap items-end justify-between gap-4">
+        <h2 class="font-serif text-4xl tracking-tight">Built to be attacked.</h2>
+        <p id="score" class="text-sm font-semibold text-forest"></p>
       </div>
-      <div id="chain" class="mt-3 hidden rounded-xl px-4 py-3 text-sm"></div>
-      <div id="steps" class="mt-4 grid gap-4 md:grid-cols-3"></div>
-    </section>
-
-    <section id="attack" class="mt-12 hidden">
-      <div class="flex flex-wrap items-end justify-between gap-3">
-        <h3 class="text-lg font-semibold text-white">Attack suite <span id="score" class="ml-2 text-sm font-normal text-slate-400"></span></h3>
-        <p id="lat" class="text-xs text-slate-400"></p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <div class="card p-5"><p class="text-xs text-muted">Decision latency, p50</p><p id="p50" class="mt-1 font-serif text-5xl text-forest">0</p></div>
+        <div class="card p-5"><p class="text-xs text-muted">Decision latency, p95</p><p id="p95" class="mt-1 font-serif text-5xl text-forest">0</p></div>
+        <div class="card p-5"><p class="text-xs text-muted">Attack cases with expected decision</p><p id="passed" class="mt-1 font-serif text-5xl text-forest">0</p></div>
       </div>
-      <div class="mt-4 overflow-x-auto rounded-2xl border border-slate-800">
-        <table class="w-full min-w-[640px] text-sm">
-          <thead class="bg-slate-900/70 text-left text-xs uppercase tracking-wide text-slate-400">
-            <tr><th class="px-4 py-3">Attack</th><th class="px-4 py-3">What it tries</th><th class="px-4 py-3">Decision</th><th class="px-4 py-3">Why</th><th class="px-4 py-3 text-right">µs</th></tr>
+      <div class="card mt-6 overflow-x-auto">
+        <table class="w-full min-w-[680px] text-sm">
+          <thead class="bg-forest text-left text-xs uppercase tracking-wider text-paper">
+            <tr><th class="px-4 py-3 font-semibold">Attack</th><th class="px-4 py-3 font-semibold">What it tries</th><th class="px-4 py-3 font-semibold">Decision</th><th class="px-4 py-3 font-semibold">Reason from the engine</th></tr>
           </thead>
-          <tbody id="rows" class="divide-y divide-slate-800"></tbody>
+          <tbody id="rows" class="divide-y divide-line"></tbody>
         </table>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Results are computed live on every run. These are the attack cases we designed, not an exhaustive proof.</p>
+      <p id="latnote" class="mt-3 text-xs text-muted"></p>
     </section>
 
-    <section class="mt-14 grid gap-4 md:grid-cols-3">
-      <div class="rounded-2xl border border-slate-800 p-5"><i data-lucide="brain" class="h-5 w-5 text-amber-400"></i><h4 class="mt-3 font-semibold text-white">AI domain</h4><p class="mt-1 text-sm text-slate-400">Understand intent, choose supplier, draft the payment, explain context.</p></div>
-      <div class="rounded-2xl border border-slate-800 p-5"><i data-lucide="cpu" class="h-5 w-5 text-emerald-400"></i><h4 class="mt-3 font-semibold text-white">Code domain</h4><p class="mt-1 text-sm text-slate-400">Verify signatures, match the mandate, apply limits, return one decision.</p></div>
-      <div class="rounded-2xl border border-slate-800 p-5"><i data-lucide="landmark" class="h-5 w-5 text-sky-400"></i><h4 class="mt-3 font-semibold text-white">UPI rail</h4><p class="mt-1 text-sm text-slate-400">Sandbox in this prototype. Built to plug into NPCI agent payment rules when they launch.</p></div>
+    <section id="how" class="grid gap-5 border-t border-line py-12 md:grid-cols-3">
+      <div class="card p-6"><p class="text-xs font-semibold uppercase tracking-wider text-pin">AI domain</p><p class="mt-2 font-serif text-2xl">The model proposes.</p><p class="mt-2 text-sm text-muted">Understand intent, choose a supplier, draft the payment, explain the context.</p></div>
+      <div class="card border-forest/40 bg-allow-soft p-6"><p class="text-xs font-semibold uppercase tracking-wider text-forest">Code domain</p><p class="mt-2 font-serif text-2xl">The gateway decides.</p><p class="mt-2 text-sm text-ink/70">Verify signatures, match the mandate, apply limits and provenance, return one decision.</p></div>
+      <div class="card p-6"><p class="text-xs font-semibold uppercase tracking-wider text-muted">UPI rail</p><p class="mt-2 font-serif text-2xl">Only then, money moves.</p><p class="mt-2 text-sm text-muted">Sandbox in this prototype. Designed to plug into NPCI agent payment rules when they launch.</p></div>
     </section>
+  </main>
 
-    <footer class="mt-14 border-t border-slate-800 pt-6 text-xs text-slate-500">Prototype by Avanish Kasar for BUILD 2036, TiE Global Summit 2026. The agent in this demo is scripted; Adhikar never trusts the agent, so the checks are the same for any framework. No real money moves.</footer>
-  </div>
+  <footer class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs leading-relaxed text-muted sm:px-6">Prototype by Avanish Kasar, team DDoxers, for BUILD 2036 at TiE Global Summit 2026. The agent in this demo is scripted. Adhikar never trusts the agent, so the checks are the same for any framework. No real money moves.</div>
+  </footer>
 
 <script>
 const $ = (id) => document.getElementById(id);
-const icons = () => { try { window.lucide && window.icons(); } catch (_) {} };
 const fmt = (paise) => "Rs " + (paise / 100).toLocaleString("en-IN", { maximumFractionDigits: 2 });
-const STYLE = {
-  ALLOW:   { label: "Allowed",        cls: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/30", icon: "circle-check" },
-  ASK_PIN: { label: "Ask for UPI PIN", cls: "bg-amber-500/15 text-amber-300 ring-amber-400/30",     icon: "key-round" },
-  BLOCK:   { label: "Blocked",        cls: "bg-rose-500/15 text-rose-300 ring-rose-400/30",          icon: "octagon-x" },
-};
-const chip = (d) => `<span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ring-1 ${STYLE[d].cls}"><i data-lucide="${STYLE[d].icon}" class="h-3.5 w-3.5"></i>${STYLE[d].label}</span>`;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ICON = (id, cls = "h-4 w-4", sw = 2) => `<svg class="${cls}" fill="none" stroke="currentColor" stroke-width="${sw}"><use href="#i-${id}"/></svg>`;
+const D = {
+  ALLOW: { label: "Allowed", cls: "bg-allow-soft text-allow", icon: "check", bar: "bg-allow" },
+  ASK_PIN: { label: "Ask for UPI PIN", cls: "bg-pin-soft text-pin", icon: "key", bar: "bg-pin" },
+  BLOCK: { label: "Blocked", cls: "bg-block-soft text-block", icon: "x", bar: "bg-block" },
+};
+const chip = (d) => `<span class="chip ${D[d].cls}">${ICON(D[d].icon)}${D[d].label}</span>`;
 let last = null;
 
 async function post(path, body) {
@@ -115,63 +150,83 @@ async function post(path, body) {
   } finally { clearTimeout(t); }
 }
 
-function showChain(ok, msg) {
+function showChain(ok, msg, extra = "") {
   const el = $("chain");
-  el.className = "mt-3 rounded-xl px-4 py-3 text-sm fade " + (ok ? "bg-emerald-500/10 text-emerald-300 ring-1 ring-emerald-400/20" : "bg-rose-500/10 text-rose-300 ring-1 ring-rose-400/20");
-  el.innerHTML = `<span class="inline-flex items-center gap-2"><i data-lucide="${ok ? "shield-check" : "shield-alert"}" class="h-4 w-4"></i>${esc(msg)}</span>`;
-  el.classList.remove("hidden"); icons();
+  el.className = "fade flex items-center gap-3 rounded-xl px-5 py-4 text-sm font-semibold " + (ok ? "bg-allow-soft text-allow" : "bg-block-soft text-block");
+  el.innerHTML = `${ICON(ok ? "shield" : "alert", "h-5 w-5")}<span>${esc(msg)}${extra ? `<span class="ml-2 font-normal opacity-80">${esc(extra)}</span>` : ""}</span>`;
+}
+
+function card(s, i) {
+  const r = s.receipt, d = D[r.decision];
+  const bad = r.decision !== "ALLOW";
+  return `<article id="step-${i + 1}" class="card fade flex flex-col overflow-hidden" style="animation-delay:${i * 140}ms">
+    <div class="h-1.5 ${d.bar}"></div>
+    <div class="flex flex-1 flex-col p-5">
+      <div class="flex items-center justify-between gap-2"><span class="text-xs font-semibold uppercase tracking-wider text-muted">Request ${i + 1}</span>${chip(r.decision)}</div>
+      <h3 class="mt-3 font-serif text-2xl leading-tight">${esc(s.title)}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muted">${esc(s.story)}</p>
+      <div class="mt-4 rounded-lg border border-line bg-paper p-3 text-sm">
+        <div class="flex justify-between gap-3"><span class="text-muted">Pay</span><span class="mono truncate">${esc(r.payee_vpa)}</span></div>
+        <div class="mt-1 flex justify-between"><span class="text-muted">Amount</span><span class="font-semibold">${fmt(r.amount)}</span></div>
+      </div>
+      <ul class="mt-4 space-y-1.5 text-sm">${r.reasons.map((x) => `<li class="flex gap-2"><span class="${bad ? (r.decision === "BLOCK" ? "text-block" : "text-pin") : "text-allow"} mt-0.5 shrink-0">${ICON(bad ? "alert" : "check")}</span><span>${esc(x)}</span></li>`).join("")}</ul>
+      <details class="receipt mt-auto pt-4 text-xs text-muted">
+        <summary class="cursor-pointer font-semibold text-forest hover:underline">Signed receipt #${r.seq} · ${r.checks.length} checks · ${r.latency_us} µs</summary>
+        <ul class="mt-3 grid gap-1">${r.checks.map((c) => `<li class="flex items-center gap-2"><span class="${c.passed ? "text-allow" : c.severity === "BLOCK" ? "text-block" : "text-pin"}">${ICON(c.passed ? "check" : "x", "h-3.5 w-3.5", 2.4)}</span><span class="mono text-[11px] text-ink/80">${esc(c.code)}</span></li>`).join("")}</ul>
+        <div class="mono mt-3 space-y-1 break-all rounded-md bg-paper p-2 text-[10.5px] leading-snug"><div><b>hash</b> ${r.receipt_hash}</div><div><b>prev</b> ${r.prev_hash}</div><div><b>sig</b> ${r.signature}</div></div>
+      </details>
+    </div>
+  </article>`;
 }
 
 $("run").onclick = async () => {
   $("run").disabled = true;
   try {
     last = await post("/api/demo/ramesh");
-    $("mandate-sig").textContent = "Signed by the user with Ed25519 · " + last.mandate.signature.slice(0, 24) + "…";
+    $("mandate-sig").textContent = "Signed by Ramesh with Ed25519 · " + last.mandate.signature.slice(0, 32) + "…";
     $("mandate-sig").classList.remove("hidden");
-    $("steps").innerHTML = last.steps.map((s, i) => {
-      const r = s.receipt;
-      return `<article class="fade rounded-2xl border border-slate-800 bg-slate-900/40 p-5" style="animation-delay:${i * 120}ms">
-        <div class="flex items-center justify-between"><span class="text-xs text-slate-500">Request ${i + 1}</span>${chip(r.decision)}</div>
-        <h4 class="mt-3 font-semibold text-white">${esc(s.title)}</h4>
-        <p class="mt-1 text-sm text-slate-400">${esc(s.story)}</p>
-        <div class="mt-4 rounded-lg bg-slate-800/50 p-3 text-sm"><div class="flex justify-between"><span class="text-slate-400">Pay</span><span class="mono text-slate-200">${esc(r.payee_vpa)}</span></div><div class="mt-1 flex justify-between"><span class="text-slate-400">Amount</span><span class="font-semibold text-white">${fmt(r.amount)}</span></div></div>
-        <ul class="mt-3 space-y-1 text-sm">${r.reasons.map((x) => `<li class="flex gap-2 text-slate-300"><i data-lucide="${r.decision === "ALLOW" ? "check" : "alert-triangle"}" class="mt-0.5 h-4 w-4 shrink-0 ${r.decision === "ALLOW" ? "text-emerald-400" : r.decision === "BLOCK" ? "text-rose-400" : "text-amber-400"}"></i>${esc(x)}</li>`).join("")}</ul>
-        <details class="mt-4 text-xs text-slate-500"><summary class="cursor-pointer hover:text-slate-300">Signed receipt #${r.seq} · ${r.checks.length} checks · ${r.latency_us} µs</summary>
-          <div class="mono mt-2 break-all space-y-1"><div>hash ${r.receipt_hash}</div><div>prev ${r.prev_hash}</div><div>sig ${r.signature}</div></div></details>
-      </article>`;
-    }).join("");
+    $("steps").innerHTML = last.steps.map(card).join("");
     $("demo").classList.remove("hidden");
-    showChain(last.chain.valid, last.chain.message);
+    showChain(last.chain.valid, last.chain.message, "Every receipt is signed and chained to the one before it.");
+    if (!window.__recording) $("demo").scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (e) { alert("Demo failed: " + e.message); }
-  finally { $("run").disabled = false; icons(); }
+  finally { $("run").disabled = false; }
 };
 
-async function verify(receipts) {
+async function verify(receipts, extra) {
   const out = await post("/api/verify", { public_key: last.adhikar_public_key, receipts });
-  showChain(out.valid, out.message);
+  showChain(out.valid, out.message, extra);
 }
-$("verify").onclick = () => last && verify(last.steps.map((s) => s.receipt)).catch((e) => alert(e.message));
+$("verify").onclick = () => last && verify(last.steps.map((s) => s.receipt), "Checked again on the server.").catch((e) => alert(e.message));
 $("tamper").onclick = () => {
   if (!last) return;
   const forged = structuredClone(last.steps.map((s) => s.receipt));
   forged[1].decision = "ALLOW";
-  verify(forged).then(() => { $("chain").innerHTML += ' <span class="text-slate-400">(we changed receipt 2 from Blocked to Allowed)</span>'; }).catch((e) => alert(e.message));
+  verify(forged, "We edited receipt 2 from Blocked to Allowed. The chain caught it.").catch((e) => alert(e.message));
+};
+
+const countUp = (el, to, suffix = "", dp = 2) => {
+  const t0 = performance.now();
+  const tick = (t) => { const k = Math.min(1, (t - t0) / 900); el.textContent = (to * k).toFixed(dp) + suffix; if (k < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
 };
 
 $("attacks").onclick = async () => {
   $("attacks").disabled = true;
   try {
     const o = await post("/api/demo/attacks");
-    $("score").textContent = `${o.passed} of ${o.total} cases got the expected decision`;
-    $("lat").textContent = `Decision latency over ${o.latency.iterations} runs: p50 ${o.latency.p50_ms} ms · p95 ${o.latency.p95_ms} ms · p99 ${o.latency.p99_ms} ms (in process, no network)`;
-    $("rows").innerHTML = o.cases.map((c) => `<tr class="fade"><td class="px-4 py-3 font-medium text-white">${esc(c.attack)}</td><td class="px-4 py-3 text-slate-400">${esc(c.description)}</td><td class="px-4 py-3">${chip(c.actual)}</td><td class="px-4 py-3 text-slate-300">${esc(c.reasons[0])}</td><td class="mono px-4 py-3 text-right text-slate-400">${c.latency_us}</td></tr>`).join("");
+    $("score").textContent = `${o.passed} of ${o.total} cases returned the expected decision`;
+    countUp($("p50"), o.latency.p50_ms, " ms");
+    countUp($("p95"), o.latency.p95_ms, " ms");
+    $("passed").textContent = `${o.passed}/${o.total}`;
+    $("latnote").textContent = `Measured live on this server over ${o.latency.iterations} decisions, inside one process, without network time. These are the attack cases we designed, not an exhaustive proof.`;
+    $("rows").innerHTML = o.cases.map((c) => `<tr class="fade bg-card"><td class="px-4 py-3 font-semibold">${esc(c.attack)}</td><td class="px-4 py-3 text-muted">${esc(c.description)}</td><td class="px-4 py-3">${chip(c.actual)}</td><td class="px-4 py-3">${esc(c.reasons[0])}</td></tr>`).join("");
     $("attack").classList.remove("hidden");
-    $("attack").scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!window.__recording) $("attack").scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (e) { alert("Attack suite failed: " + e.message); }
-  finally { $("attacks").disabled = false; icons(); }
+  finally { $("attacks").disabled = false; }
 };
 
-icons();
 if (new URLSearchParams(location.search).has("judge")) $("run").click();
 </script>
 </body>

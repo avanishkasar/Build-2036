@@ -120,7 +120,7 @@ def run_attacks() -> dict:
                   eng.decide(intent(now, payee=SCAM, amount=rs(49_000), payee_origin=Origin.UNTRUSTED_WEB, amount_origin=Origin.UNTRUSTED_WEB), sm, now)))
 
     eng, sm = fresh()
-    cases.append(("Payee swap", "Approved payee replaced with an unknown UPI ID", Decision.BLOCK,
+    cases.append(("Payee swap", "Lookalike UPI ID: capital I in place of l in shreeji.steel", Decision.BLOCK,
                   eng.decide(intent(now, payee="shreeji.steeI@okhdfc", amount=rs(18_400)), sm, now)))
 
     eng, sm = fresh()
