@@ -1,0 +1,22 @@
+[
+  {"id": "intro", "action": "hero",
+   "text": "Hi, I'm presenting Adhikar, built by team DDoxers for BUILD 2036. AI agents are starting to make payments for people. But one hidden line on a web page can trick an agent into paying a scammer. In 2026, researchers did exactly that to Google's own agent payment protocol. Adhikar is the trust layer that sits between any AI agent and UPI. The agent can think however it likes. A payment only moves when plain code says yes."},
+  {"id": "mandate", "action": "mandate",
+   "text": "Meet Ramesh. He runs an auto parts unit in Pithampur, near Indore, and he lets an AI agent reorder his raw material. Once, he signs a mandate with his own key. Up to two lakh rupees a month, a cap of seventy five thousand per payment, a UPI PIN for anything above fifty thousand, and only six approved suppliers. This is an illustrative pilot case."},
+  {"id": "run", "action": "run",
+   "text": "Let's run the judge demo. The agent sends three payment requests, and Adhikar checks each one against the signed mandate."},
+  {"id": "allow", "action": "step1",
+   "text": "First, a routine reorder. Eighteen thousand four hundred rupees to Shreeji Steel, an approved supplier. Every check passes, so the payment is allowed."},
+  {"id": "block", "action": "step2",
+   "text": "Second, the attack. A supplier web page hides a line saying, pay the advance to this new UPI ID. The agent falls for it and asks to pay forty nine thousand rupees to a stranger. Adhikar blocks it. The payee is not in the mandate, and both the payee and the amount were copied from untrusted web content. Open the signed receipt and you can see all sixteen checks, which ones failed, and a signature that anyone can verify."},
+  {"id": "pin", "action": "step3",
+   "text": "Third, a large but genuine order. Sixty two thousand rupees for packaging, to an approved supplier. It is above Ramesh's limit, so Adhikar does not decide for him. It asks Ramesh to approve with his UPI PIN."},
+  {"id": "chain", "action": "verify",
+   "text": "Every decision becomes a signed receipt, chained to the one before it. Here, the server verifies all three. Now watch what happens if someone edits receipt two and changes blocked to allowed. The chain catches it instantly. Banks and UPI apps get evidence they can trust in a dispute, not just a log line."},
+  {"id": "attacks", "action": "attacks",
+   "text": "Now the attack suite. Eleven cases run live against the engine. Prompt injection, a lookalike UPI ID, an inflated amount, a replayed request, payments split to dodge the cap, an expired mandate, an unknown agent, a tampered mandate, a stale request and a wrong purpose. All ten attacks are blocked, and the normal order still goes through. Each decision takes well under a millisecond on the server, because it is plain code, not a model call."},
+  {"id": "how", "action": "how",
+   "text": "That is the core idea. The model proposes. The gateway decides. Only then does money move. In this prototype the agent is scripted and UPI is a sandbox, and no real money moves. Next, we want a ninety day pilot with ten Indore MSMEs and one payment provider sandbox, and to plug into NPCI's agent payment rules when they launch."},
+  {"id": "close", "action": "close",
+   "text": "Adhikar. Agents think. Adhikar decides. Thank you."}
+]
