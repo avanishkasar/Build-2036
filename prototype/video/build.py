@@ -87,7 +87,7 @@ def main() -> None:
     ap.add_argument("--out", default=str(HERE / "out"))
     ap.add_argument("--no-tts", action="store_true")
     a = ap.parse_args()
-    out = Path(a.out)
+    out = Path(a.out).resolve()
     out.mkdir(parents=True, exist_ok=True)
     segs = json.loads((HERE / "script.json").read_text())
 
