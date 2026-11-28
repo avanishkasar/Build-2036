@@ -27,7 +27,7 @@ Paste your YouTube link after uploading `ADHIKAR_demo.mp4` (set visibility to Un
 
 ## Deployed Link (If any)
 
-Paste the Vercel production URL, with `?judge` appended so the demo runs on load.
+https://adhikar-sigma.vercel.app/?judge
 
 ## Upload your Solution Deck/PPT
 

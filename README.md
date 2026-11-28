@@ -13,4 +13,6 @@ Submission workspace for **BUILD 2036**, the official hackathon of the 11th TiE 
 
 | `deck/GEMINI_IMAGE_PROMPTS.md` | Image prompts for Gemini to replace the Canva stock visuals |
 
+**Live prototype:** https://adhikar-sigma.vercel.app/?judge (code in `prototype/`)
+
 The final deck lives in Canva: https://www.canva.com/d/O3wvp_MGJXZN3WD
